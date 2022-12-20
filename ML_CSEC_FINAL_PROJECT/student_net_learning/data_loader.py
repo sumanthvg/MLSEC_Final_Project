@@ -4,7 +4,7 @@ import os
 import argparse
 import random
 import sys
-sys.path.append('/media/milton/ssd1/research/ai-artist')
+sys.path.append('/ML-CSec-Final/ADD-FX')
 from utils.functions import progress_bar
 
 from tensorboardX import SummaryWriter
@@ -58,7 +58,7 @@ print('==> Preparing data..')
 
 def get_data(args):
     trainset = ImageListDataset(root=args.root,
-                                list_path='/media/milton/ssd1/research/competitions/data/datalist/',
+                                list_path='/ML-CSec-Final/data/datalist/',
                                 split='train',
                                 transform=transform_train)
 
@@ -69,7 +69,7 @@ def get_data(args):
                                               pin_memory=True)
 
     valset = ImageListDataset(root=args.root,
-                              list_path='/media/milton/ssd1/research/competitions/data/datalist/',
+                              list_path='/ML-CSec-Final/data/datalist/',
                               split='val',
                               transform=transform_val)
 
