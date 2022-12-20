@@ -64,7 +64,7 @@ class ImageListDataset(data.Dataset):
         path = self.images[index]
         target = self.targets[index]
         img =path.split('/')[-1]
-        path=os.path.join('/media/milton/ssd1/research/competitions/data/student_model_imgs/',img)
+        path=os.path.join('/ML-CSec-Final/ADD-FX/data/student_model_imgs/',img)
         img=Image.open(path)
         if self.transform is not None:
             img = self.transform(img)
