@@ -9,7 +9,7 @@ import os
 import argparse
 import random
 import sys
-sys.path.append('/media/milton/ssd1/research/ai-artist')
+sys.path.append('/ML-CSec-Final/ADD-FX')
 from utils.functions import progress_bar
 
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
