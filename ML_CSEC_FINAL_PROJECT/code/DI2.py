@@ -1,4 +1,4 @@
-"""Implementation of sample attack on Inception_v3"""
+"""Implementation of sample attack on VGG-19"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -13,7 +13,7 @@ from scipy.misc import imresize
 
 import tensorflow as tf
 
-from tensorflow.contrib.slim.nets import inception
+from tensorflow.contrib.slim.nets import vgg
 
 slim = tf.contrib.slim
 
@@ -21,7 +21,7 @@ tf.flags.DEFINE_string(
     'master', '', 'The address of the TensorFlow master to use.')
 
 tf.flags.DEFINE_string(
-    'checkpoint_path', '', 'Path to checkpoint for inception network.')
+    'checkpoint_path', '', 'Path to checkpoint for VGG network.')
 
 tf.flags.DEFINE_string(
     'input_dir', '', 'Input directory with images.')
@@ -85,7 +85,6 @@ def load_images(input_dir, output_dir, batch_shape):
         if os.path.isfile(output_name) == False:
             with tf.gfile.Open(filepath) as f:
                 image = imread(f, mode='RGB').astype(np.float) / 255.0
-            # Images for inception classifier are normalized to be in [-1, 1] interval.
             images[idx, :, :, :] = image * 2.0 - 1.0
             filenames.append(os.path.basename(filepath))
             idx += 1
@@ -107,8 +106,6 @@ def save_images(images, filenames, output_dir):
       output_dir: directory where to save images
     """
     for i, filename in enumerate(filenames):
-        # Images for inception classifier are normalized to be in [-1, 1] interval,
-        # so rescale them back to [0, 1].
         with tf.gfile.Open(os.path.join(output_dir, filename), 'w') as f:
             imsave(f, (images[i, :, :, :] + 1.0) * 0.5 * 255, format='png')
 
@@ -118,8 +115,8 @@ def graph(x, y, i, x_max, x_min, grad):
     num_classes = 1001
     momentum = FLAGS.momentum
 
-    with slim.arg_scope(inception.inception_v3_arg_scope()):
-        logits, end_points = inception.inception_v3(
+    with slim.arg_scope(vgg.vgg_arg_scope()):
+        logits, end_points = vgg.vgg_arg_scope(
             input_diversity(x), num_classes=num_classes, is_training=False)
     pred = tf.argmax(end_points['Predictions'], 1)
 
