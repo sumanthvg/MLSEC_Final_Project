@@ -9,7 +9,7 @@ from imgaug import augmenters as iaa
 import numpy as np
 
 
-args['save_root']='./changed_images_1/'
+args['save_root']='./modded_imgs/'
 
 args['cuda']="1"
 args['ssim_thr']=SSIM_THR
