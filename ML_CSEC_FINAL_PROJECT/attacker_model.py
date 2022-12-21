@@ -31,7 +31,7 @@ parser = argparse.ArgumentParser(description='PyTorch student network training')
 
 args = {
     'root':'../data/imgs/',
-    'model_name':'DenseNet',
+    'model_name':'VGG',
     'checkpoint_path':'./student_net_learning/checkpoint/DenseNet/best_model_chkpt.t7'
 }
 
@@ -43,9 +43,9 @@ def reverse_normalize(tensor, mean, std):
     return tensor_copy
 
 def get_model():
-    from student_net_learning.models.densenet import densenet201
-    print('Loading DenseNet121')
-    net = densenet201(pretrained=True)
+    from student_net_learning.models.vgg import vgg19
+    print('Loading VGG')
+    net = vgg(pretrained=True)
     checkpoint = torch.load(args['checkpoint_path'])
     net.load_state_dict(checkpoint['net'])
     return net
