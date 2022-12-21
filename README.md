@@ -1,5 +1,24 @@
 # MLSEC_Final_Project
 
+List of Requirements:
+numpy
+matplotlib
+pandas
+pyparsing
+Pillow
+kiwisolver
+tqdm
+cycler
+pdb
+scipy
+scikit-learn
+pytorch (our version ran on 0.3.0)
+cycler
+python-dateutil
+pytz
+networkx
+OpenCL
+
 To run the project, one must first download the MCS2018 module, then import it with the following snippet:
 
 `import MCS2018_CPU as MCS2018`
