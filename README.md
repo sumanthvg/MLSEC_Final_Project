@@ -4,7 +4,9 @@ To run the project, one must first download the MCS2018 module, then import it w
 
 `import MCS2018_CPU as MCS2018`
 
-Now, while the code itself supprts CUDA, we have also run it on a Ryzen 9 6900 hence, it's primarily meant for being run on a CPU.
+Now, while the code itself supprts CUDA, we have run it on a Ryzen 9 6900HS and an RTX 3070 GPU.
+Parts of the code have been modified for running on OpenCL and not CUDA, due to performance limitations.
+
 Download the blackbox model and move it to the baseline directory.
 Now, for some of the essential downloads of the pair data lists and submit list and the student model images, we need to run the following
 
