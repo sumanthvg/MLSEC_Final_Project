@@ -1,6 +1,7 @@
 # MLSEC_Final_Project
 
 List of Requirements:
+```
 numpy
 matplotlib
 pandas
@@ -18,6 +19,7 @@ python-dateutil
 pytz
 networkx
 OpenCL
+```
 
 To run the project, one must first download the MCS2018 module, then import it with the following snippet:
 
