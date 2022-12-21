@@ -14,6 +14,7 @@ from tensorboardX import SummaryWriter
 
 from imgaug import augmenters as iaa
 import imgaug as ia
+from PIP import Image
 
 from torch.utils.data.dataset import Dataset
 
@@ -26,7 +27,17 @@ def augment_images(sources_list):
         img = Image.open(source_img_path)
         crop_rectangle = (13, 13, 224, 224)
         cropped_im = img.crop(crop_rectangle)
-        resized = cropped_im.resize((112, 112), Image.ANTIALIAS)
+        
+        color_changed = cropped_im.convert('RGB')
+        col_hold = color_changed.getdata()
+        color_changed_temp = []
+        for i in col_hold:
+            if i[0] in list(range(200, 256)):
+                color_changed_temp.append((255, 220, 100))
+            else:
+                color_changed_temp.append(i)
+        color_changed.putdata(color_changed_temp)
+        resized = color_changed.resize((112, 112), Image.ANTIALIAS)
         source_images.append(np.asarray(resized))
         original_image=np.asarray(resized).copy()
         original_images.append(original_image)
