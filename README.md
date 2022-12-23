@@ -38,7 +38,7 @@ Follow this up by-
 `python prepare_data.py --root data/student_model_imgs/ --datalist_path data/datalist/ --datalist_type train --gpu_id 0;`
 `python prepare_data.py --root data/imgs/ --datalist_path data/datalist/ --datalist_type val --gpu_id 0`
 
-This shall prepare the data for the student model.
+This shall help us to prepare the data for the student model.
 Following this we can run the following set of commands to train the blackbox student model.
 `cd student_net_learning;`
 `CUDA_VISIBLE_DEVICES=0 python main.py --name Baseline1 --epochs <decide number here> --batch_size 32 --datalist ../data/datalist_small/ --root ../data/`
